@@ -1,0 +1,14 @@
+.publication-time {
+    font-size: 10pt;
+    color: darkgrey;
+}
+
+.post {
+    outline: 1px solid;
+    border: black;
+    margin-bottom: 1rem;
+}
+
+.posts {
+    list-style: none;
+}
