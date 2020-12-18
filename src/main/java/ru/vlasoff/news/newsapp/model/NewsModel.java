@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "content")
 @Data
 public class NewsModel {
 
@@ -20,11 +20,15 @@ public class NewsModel {
     @NotNull
     private String title;
 
-    @Column(name = "post_text")
+    @Column(name = "image_url")
+    @NotNull
+    private String imageUrl;
+
+    @Column(name = "content_text")
     @NotNull
     private String text;
 
-    @Column(name = "post_time")
+    @Column(name = "content_time")
     @NotNull
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

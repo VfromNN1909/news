@@ -1,18 +1,19 @@
-
 import './App.css';
 import React from "react"
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
-import Content from "./components/Content/Content";
+import Header from "./components/header/Header";
+import Content from "./components/content/Content";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 
 function App() {
-  return (
-      <div className="app-wrapper">
+    return (
+        <div className="app-wrapper">
             <Header/>
-            <Navbar />
-            <Content />
-      </div>
-  );
+            <Navbar/>
+            <Content/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;
