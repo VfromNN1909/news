@@ -24,6 +24,7 @@ public class NewsModel {
     @NotNull
     private String imageUrl;
 
+
     @Column(name = "content_text")
     @NotNull
     private String text;
@@ -33,5 +34,13 @@ public class NewsModel {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
+
+    @Column(name = "content_topic")
+    @NotNull
+    private String topic;
+
+    @Column(name = "short_text")
+    @NotNull
+    private String shortText;
 
 }

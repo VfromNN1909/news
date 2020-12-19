@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.vlasoff.news.newsapp.model.NewsModel;
 import ru.vlasoff.news.newsapp.service.ServiceImpl;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/news")
@@ -33,6 +35,21 @@ public class NewsAPI {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(post, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{topic}",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<NewsModel>> getPostsByTopic(@PathVariable String topic) {
+        if (topic == null || topic.equals("")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<NewsModel> filteredNews = service.getAll()
+                .stream()
+                .filter(newsModel -> newsModel.getTopic().equals(topic))
+                .collect(Collectors.toList());
+        if (filteredNews.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(filteredNews, HttpStatus.OK);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
